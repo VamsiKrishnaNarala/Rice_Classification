@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rice Variety Classifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 480px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #2f2f2f;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2d89ef;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #1c6dd0;
+        }
+
+        .result {
+            margin-top: 25px;
+        }
+
+        .result h3 {
+            color: #333;
+        }
+
+        .result img {
+            margin-top: 15px;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Rice Variety Classifier</h2>
+        <form method="POST" action="/predict" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        <div class="result">
+            <h3>Predicted Variety: <strong>{{ prediction }}</strong></h3>
+            {% if img_path %}
+            <img src="{{ img_path }}" alt="Uploaded Image">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
